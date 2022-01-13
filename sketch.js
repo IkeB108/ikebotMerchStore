@@ -1,4 +1,5 @@
 function preload(){
+  loadedAllFiles = false;
   shirtOne = loadImage('bot.png')
   shirtTwo = loadImage('bot2.png')
   shirtThree = loadImage('bot3.png')
@@ -13,6 +14,7 @@ function preload(){
   dubstep = loadSound('sheepDubstep.mp3')
 }
 function setup() {
+  loadedAllFiles = true;
   myCanvas = createCanvas(800,700)
   myCanvas.id('demo')
   imageMode(CENTER,CENTER)
@@ -67,7 +69,7 @@ function updateCursor(){
 }
 
 function mouseClicked(){
-  if(collidePointRect( mouseX, mouseY, width/2 - (searchW/2), 237, searchW, searchH ) && animationTimer == -1){
+  if(loadedAllFiles && collidePointRect( mouseX, mouseY, width/2 - (searchW/2), 237, searchW, searchH ) && animationTimer == -1){
     animationTimer = 0;
     dubstep.play();
   }
